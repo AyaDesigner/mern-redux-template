@@ -3,17 +3,17 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 const itemsRouter = require('./routes/items');
-
 const app = express();
-
 const connectDB = require('./database/config');
+var cors = require('cors');
 
 //db connection
 connectDB();
 
 // view engine setup
+app.use(cors());
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
