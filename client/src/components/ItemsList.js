@@ -20,10 +20,9 @@ const useStyles = makeStyles({
 
 
 export default function ItemList() {
+
     const items = useSelector((state) => state.itemsReducer);
-
     const classes = useStyles();
-
 
 
     return (
@@ -36,14 +35,14 @@ export default function ItemList() {
                             <TableCell align="right">Name</TableCell>
                             <TableCell align="right">Description</TableCell>
                             <TableCell align="right">Price</TableCell>
-                         
+
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {items.map((item) => (
+                        {items.map((item, index) => (
                             <TableRow key={item._id}>
                                 <TableCell component="th" scope="row">
-                                    1
+                                    {index + 1}
                                 </TableCell>
                                 <TableCell align="right">{item.name}</TableCell>
                                 <TableCell align="right">{item.description}</TableCell>

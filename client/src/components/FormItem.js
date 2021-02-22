@@ -4,6 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../redux/actions/items-actions';
+import { deleteItems } from '../redux/actions/items-actions';
+
 
 
 
@@ -18,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function FormItem  () {
+export default function FormItem() {
     const executeReduxAction = useDispatch();
     const [name, setName] = React.useState('');
     const [description, setDescription] = React.useState('');
@@ -45,48 +47,62 @@ export default function FormItem  () {
 
     const saveItem = () => {
         const newItem = {
-          name: name,
-          description: description,
-          price: price
+            name: name,
+            description: description,
+            price: price
         };
-    
+
         const actionToExecute = addItem(newItem);
         executeReduxAction(actionToExecute);
+    }
+
+    const deleteAllItems = () => {
+        const actionToExecute = deleteItems();
+        executeReduxAction(actionToExecute);
+
     }
 
     return (
         <div>
             <form className={classes.root} noValidate autoComplete="off">
-               
-                <TextField 
-                id="filled-basic" 
-                label="Name" 
-                variant="filled" 
-                onChange={handleNameChange}
+
+                <TextField
+                    id="filled-basic"
+                    label="Name"
+                    variant="filled"
+                    onChange={handleNameChange}
                 />
-                <TextField 
-                id="filled-basic" 
-                label="Description" 
-                variant="filled"
-                onChange={handleDescriptionChange}
+                <TextField
+                    id="filled-basic"
+                    label="Description"
+                    variant="filled"
+                    onChange={handleDescriptionChange}
 
                 />
-                <TextField 
-                id="filled-number" 
-                label="Price" 
-                variant="filled" 
-                type="number"
-                onChange={handlePriceChange}
+                <TextField
+                    id="filled-number"
+                    label="Price"
+                    variant="filled"
+                    type="number"
+                    onChange={handlePriceChange}
                 />
-                
+
 
             </form>
-            <Button 
-            variant="contained" 
-            color="primary"
-            onClick={saveItem}
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={saveItem}
             >
                 Save item
+            </Button>
+
+            <Button
+                variant="contained"
+                color="secondary"
+                onClick={deleteAllItems}
+            >
+                Delete all items
             </Button>
         </div>
     );

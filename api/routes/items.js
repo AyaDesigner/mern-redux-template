@@ -37,4 +37,13 @@ router.route('/:id').delete((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+
+//deleting all items
+router.route('/').delete((req, res) => {
+  Item.deleteMany()
+    .then(() => res.json('Items deleted.'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+
 module.exports = router;

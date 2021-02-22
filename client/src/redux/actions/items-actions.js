@@ -36,7 +36,7 @@ export const addItem = (itemWithoutId) => {
 
 
 
-export const deletePlan = (itemId) => {
+export const deleteItem = (itemId) => {
     return dispatch => { //return function
         return axios
             .delete(`http://localhost:5000/items/${itemId}`) //return delete request response
@@ -67,3 +67,18 @@ export const updateItem = (item) => {
     }
 };
 
+
+
+
+export const deleteItems = () => {
+    return dispatch => { //return function
+        return axios
+            .delete('http://localhost:5000/items') //return delete request response
+            .then((data) => { //pass data in as a parameter, call the callback, dispatch the action. 
+                dispatch({
+                    type: 'DELETE_ITEMS',
+                    value: []
+                })
+            })
+    }
+};

@@ -14,6 +14,9 @@ const itemsReducer = (state = [], action) => {
   
       case 'UPDATE_ITEM':
         return itemsArr;
+
+      case 'DELETE_ITEMS':
+          return [];
   
       default:
         return state;
