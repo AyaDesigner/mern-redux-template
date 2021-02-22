@@ -31,7 +31,7 @@ export default function ItemList() {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Item number</TableCell>
+                            <TableCell>Nº</TableCell>
                             <TableCell align="right">Name</TableCell>
                             <TableCell align="right">Description</TableCell>
                             <TableCell align="right">Price</TableCell>
