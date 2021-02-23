@@ -10,7 +10,7 @@ const itemsReducer = (state = [], action) => {
         return itemsArr;
   
       case 'DELETE_ITEM':
-        return itemsArr;
+        return itemsArr.filter(item => item._id !== action.value)
   
       case 'UPDATE_ITEM':
         return itemsArr;

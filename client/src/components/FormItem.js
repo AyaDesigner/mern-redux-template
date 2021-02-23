@@ -7,6 +7,8 @@ import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../redux/actions/items-actions';
 import { deleteItems } from '../redux/actions/items-actions';
+import Box from '@material-ui/core/Box';
+
 
 
 
@@ -16,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
-            width: '25ch',
+            width: '20ch',
         },
     },
 }));
@@ -33,17 +35,14 @@ export default function FormItem() {
 
     const handleNameChange = (ev) => {
         setName(ev.target.value);
-
     };
 
     const handleDescriptionChange = (ev) => {
         setDescription(ev.target.value);
-
     };
 
     const handlePriceChange = (ev) => {
         setPrice(ev.target.value);
-
     };
 
 
@@ -66,18 +65,21 @@ export default function FormItem() {
 
     return (
         <div>
+            <Box display="flex" justifyContent="center" m={15} p={0}  bgcolor="background.paper">
             <form className={classes.root} noValidate autoComplete="off">
 
                 <TextField
                     id="filled-basic"
                     label="Name"
                     variant="filled"
+                    size="small"
                     onChange={handleNameChange}
                 />
                 <TextField
                     id="filled-basic"
                     label="Description"
                     variant="filled"
+                    size="small"
                     onChange={handleDescriptionChange}
 
                 />
@@ -85,16 +87,18 @@ export default function FormItem() {
                     id="filled-number"
                     label="Price"
                     variant="filled"
+                    size="small"
                     type="number"
                     onChange={handlePriceChange}
                 />
 
 
             </form>
+            </Box>
+
             <Button
                 mr={2}
-                mt={2}
-                mb={10}
+                mb={15}
                 variant="contained"
                 color="primary"
                 onClick={saveItem}
@@ -103,8 +107,7 @@ export default function FormItem() {
             </Button>
 
             <Button
-                mt={2}
-                mb={10}
+                mb={15}
                 variant="contained"
                 color="secondary"
                 onClick={deleteAllItems}
